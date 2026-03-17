@@ -184,7 +184,8 @@ src/main/resources/*.txt
 !src/main/resources/placeholder.txt
 
 # Robot deploy txt files
-src/main/deploy/deploy*.txt
+src/main/deploy/*.txt
+!src/main/deploy/example.txt
 
 # NetworkTable Persistence files
 networktables.ini
