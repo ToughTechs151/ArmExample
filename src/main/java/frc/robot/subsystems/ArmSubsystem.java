@@ -122,8 +122,8 @@ public class ArmSubsystem extends SubsystemBase implements AutoCloseable {
           0,
           0,
           new TrapezoidProfile.Constraints(
-              ArmConstants.ARM_MAX_VELOCITY_RAD_PER_SEC,
-              ArmConstants.ARM_MAX_ACCELERATION_RAD_PER_SEC2));
+              Units.degreesToRadians(ArmConstants.ARM_MAX_VELOCITY_DEG_PER_SEC),
+              Units.degreesToRadians(ArmConstants.ARM_MAX_ACCELERATION_DEG_PER_SEC2)));
 
   private ArmFeedforward feedforward =
       new ArmFeedforward(
@@ -148,9 +148,9 @@ public class ArmSubsystem extends SubsystemBase implements AutoCloseable {
   private TunableNumber kg = new TunableNumber("ArmKG", ArmConstants.ARM_KG);
   private TunableNumber kv = new TunableNumber("ArmKV", ArmConstants.ARM_KV_VOLTS_PER_RAD_PER_SEC);
   private TunableNumber maxVelocity =
-      new TunableNumber("ArmMaxVelocity", ArmConstants.ARM_MAX_VELOCITY_RAD_PER_SEC);
+      new TunableNumber("ArmMaxVelocity", ArmConstants.ARM_MAX_VELOCITY_DEG_PER_SEC);
   private TunableNumber maxAcceleration =
-      new TunableNumber("ArmMaxAcceleration", ArmConstants.ARM_MAX_ACCELERATION_RAD_PER_SEC2);
+      new TunableNumber("ArmMaxAcceleration", ArmConstants.ARM_MAX_ACCELERATION_DEG_PER_SEC2);
 
   /** Create a new ArmSubsystem controlled by a Profiled PID COntroller . */
   public ArmSubsystem(Hardware armHardware) {
@@ -514,7 +514,9 @@ public class ArmSubsystem extends SubsystemBase implements AutoCloseable {
 
     // Read Preferences for Trapezoid Profile and update
     armController.setConstraints(
-        new TrapezoidProfile.Constraints(maxVelocity.get(), maxAcceleration.get()));
+        new TrapezoidProfile.Constraints(
+            Units.degreesToRadians(maxVelocity.get()),
+            Units.degreesToRadians(maxAcceleration.get())));
 
     // Read Preferences for Feedforward and create a new instance
     feedforward = new ArmFeedforward(ks.get(), kg.get(), kv.get(), 0);
