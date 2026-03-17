@@ -1,0 +1,39 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Arm Brake Mode": "Command",
+      "/SmartDashboard/Arm Coast Mode": "Command",
+      "/SmartDashboard/Arm Reset Position": "Command",
+      "/SmartDashboard/Arm Sim": "Mechanism2d",
+      "/SmartDashboard/Arm: Shift Position Down": "Command",
+      "/SmartDashboard/Arm: Shift Position Up": "Command",
+      "/SmartDashboard/ArmSubsystem": "Subsystem"
+    },
+    "windows": {
+      "/SmartDashboard/Arm Sim": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Arm: Shift Position Down": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Arm: Shift Position Up": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/ArmSubsystem": {
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  },
+  "NetworkTables Info": {
+    "visible": true
+  }
+}
